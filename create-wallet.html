@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AZ ZAMAN Wallet Generator</title>
+</head>
+<body>
+  <h2>AZ ZAMAN REAL WALLET</h2>
+  <button onclick="generateWallet()">Generate Wallet</button>
+  <pre id="output"></pre>
+
+  <script>
+    function randomString(length) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        result += chars[Math.floor(Math.random() * chars.length)];
+      }
+      return result;
+    }
+
+    function generateWallet() {
+      const publicKey = "G" + randomString(55);
+      const secretKey = "S" + randomString(55);
+
+      document.getElementById("output").textContent =
+        "PUBLIC KEY:\\n" + publicKey +
+        "\\n\\nSECRET KEY:\\n" + secretKey;
+    }
+  </script>
+</body>
+</html>
