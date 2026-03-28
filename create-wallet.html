@@ -3,49 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AZ ZAMAN REAL WALLET</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/10.4.1/stellar-sdk.min.js"></script>
 
 <style>
 body{
     font-family: Arial, sans-serif;
     background:#f4f4f4;
     padding:20px;
-    margin:0;
 }
 
 .container{
     max-width:500px;
     margin:auto;
     background:white;
-    padding:20px;
-    border-radius:15px;
+    padding:25px;
+    border-radius:20px;
     box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 h1{
-    font-size:28px;
     text-align:center;
+    font-size:28px;
 }
 
 button{
     width:100%;
     padding:15px;
-    font-size:18px;
+    font-size:20px;
     background:#6f42c1;
     color:white;
     border:none;
-    border-radius:10px;
+    border-radius:12px;
     margin-top:20px;
 }
 
 #output{
     margin-top:20px;
     padding:15px;
-    background:#fafafa;
-    border-radius:10px;
+    background:#f7f7f7;
+    border-radius:12px;
     word-break:break-all;
-    font-size:16px;
 }
 </style>
 </head>
@@ -54,29 +53,17 @@ button{
 
 <div class="container">
     <h1>AZ ZAMAN REAL WALLET</h1>
-
     <button onclick="generateWallet()">Generate Wallet</button>
-
     <div id="output"></div>
 </div>
 
 <script>
-function randomString(length){
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-    let result = "";
-    for(let i=0;i<length;i++){
-        result += chars.charAt(Math.floor(Math.random()*chars.length));
-    }
-    return result;
-}
-
 function generateWallet(){
-    const publicKey = "G" + randomString(55);
-    const secretKey = "S" + randomString(55);
+    const pair = StellarSdk.Keypair.random();
 
     document.getElementById("output").innerHTML =
-        "<b>PUBLIC KEY:</b><br>" + publicKey +
-        "<br><br><b>SECRET KEY:</b><br>" + secretKey;
+        "<b>PUBLIC KEY:</b><br>" + pair.publicKey() +
+        "<br><br><b>SECRET KEY:</b><br>" + pair.secret();
 }
 </script>
 
