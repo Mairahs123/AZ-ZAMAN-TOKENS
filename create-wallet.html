@@ -1,76 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AZ ZAMAN Wallet Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      margin: 0;
-      background: #f5f5f5;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
+<title>AZ ZAMAN REAL WALLET</title>
 
-    button {
-      padding: 12px 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f4;
+    padding:20px;
+    margin:0;
+}
 
-    #output {
-      margin-top: 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 10px;
-      font-size: 18px;
-      line-height: 1.7;
-      word-break: break-all;
-    }
+.container{
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
 
-    .label {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-  </style>
+h1{
+    font-size:28px;
+    text-align:center;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    background:#6f42c1;
+    color:white;
+    border:none;
+    border-radius:10px;
+    margin-top:20px;
+}
+
+#output{
+    margin-top:20px;
+    padding:15px;
+    background:#fafafa;
+    border-radius:10px;
+    word-break:break-all;
+    font-size:16px;
+}
+</style>
 </head>
+
 <body>
 
-  <h1>AZ ZAMAN REAL WALLET</h1>
+<div class="container">
+    <h1>AZ ZAMAN REAL WALLET</h1>
 
-  <button onclick="generateWallet()">Generate Wallet</button>
+    <button onclick="generateWallet()">Generate Wallet</button>
 
-  <div id="output"></div>
+    <div id="output"></div>
+</div>
 
-  <script>
-    function randomString(length) {
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-      let result = "";
-      for (let i = 0; i < length; i++) {
-        result += chars[Math.floor(Math.random() * chars.length)];
-      }
-      return result;
+<script>
+function randomString(length){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+    let result = "";
+    for(let i=0;i<length;i++){
+        result += chars.charAt(Math.floor(Math.random()*chars.length));
     }
+    return result;
+}
 
-    function generateWallet() {
-      const publicKey = "G" + randomString(55);
-      const secretKey = "S" + randomString(55);
+function generateWallet(){
+    const publicKey = "G" + randomString(55);
+    const secretKey = "S" + randomString(55);
 
-      document.getElementById("output").innerHTML =
-        "<div class='label'>PUBLIC KEY:</div>" +
-        publicKey +
-        "<br><br>" +
-        "<div class='label'>SECRET KEY:</div>" +
-        secretKey;
-    }
-  </script>
+    document.getElementById("output").innerHTML =
+        "<b>PUBLIC KEY:</b><br>" + publicKey +
+        "<br><br><b>SECRET KEY:</b><br>" + secretKey;
+}
+</script>
 
 </body>
 </html>
